@@ -58,6 +58,15 @@ const todoJSON = JSON.stringify(todos)
 console.log(todoJSON)
 
 //for loop
-for (let i=0; i<5; i++){
+for (let i=0; i<2; i++){
     console.log(i)
+}
+let i = 5
+while( i<8){
+    console.log(i)
+    i++
+}
+//for loop through array
+for (let x of todos){
+    console.log(x.profession)
 }
