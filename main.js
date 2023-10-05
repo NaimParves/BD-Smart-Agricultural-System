@@ -40,15 +40,23 @@ console.log(store.dairy.cheese)
 
 const todos=[
     {
-        id: 1,
-        name: 'mandina',
-        profession: 'teacher'
+        Id: 1,
+        Name: 'Mandina',
+        Profession: 'Teacher',
+        Vaccine: true
     },
     {
-        id: 2,
-        name: 'Thenos',
-        profession: 'Genetor'
+        Id: 2,
+        Name: 'Thenos',
+        Profession: 'Genetor',
+        Vaccine: false
 
+    },
+    {
+        Id: 3,
+        Name: 'Leo',
+        Profession: 'Player',
+        Vaccine: true
     }
 ]
 console.log(todos[1].id)
@@ -70,3 +78,33 @@ while( i<8){
 for (let x of todos){
     console.log(x.profession)
 }
+//***HighOrder Array Method***
+//forEach - it prints which particular value we seek to see
+todos.forEach(function(x){
+    console.log(x.Vaccine)
+})
+
+//map - it takes a particular values through loop and returns as a different list
+const todoID = todos.map(function(x){
+    return(x.Id)
+}
+)
+console.log(todoID)
+
+//filter - it returns only those values whose satisfies conditions
+const todoVaccine = todos.filter(function(x){
+    return(x.Vaccine === true)
+}
+)
+console.log(todoVaccine)
+
+//but I can now, print this particular satisfied values into a seperate array
+const todoVaccine1 = todos.filter(function(x){
+    return(x.Vaccine === true)
+}).map(function(y){
+    return(y.Id)
+})
+console.log(todoVaccine1)
+
+//Conditionals
+
