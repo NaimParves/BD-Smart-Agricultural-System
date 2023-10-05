@@ -107,4 +107,40 @@ const todoVaccine1 = todos.filter(function(x){
 console.log(todoVaccine1)
 
 //Conditionals
+const x = 7
+if(x === 5){
+    console.log('It is 5')
+} else if(x > 5){
+    console.log("More than 5")
+} else {
+    console.log("Less than 5")
+}
 
+//or, and
+const p = 10
+const q = 6
+if (p> 9 || q < 2){
+    console.log("Satisfies")
+} else{
+    console.log("No luck")
+}
+if (p> 9 && q < 2){
+    console.log("Satisfies")
+} else{
+    console.log("No luck")
+}
+//ternary operator
+const val = 10
+const color =(val>5) ? 'red':'blue'
+console.log(color)
+
+//function
+function savingUp(b1, b2){
+    if (b1>10){
+        b1 += 5
+        return b1
+    } else {
+        return b2
+    }
+}
+console.log(savingUp(7, 30))
