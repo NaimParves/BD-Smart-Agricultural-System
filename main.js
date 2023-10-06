@@ -144,3 +144,46 @@ function savingUp(b1, b2){
     }
 }
 console.log(savingUp(7, 30))
+
+//creating function
+//constructor
+function Courses(c1, c2, doe){
+    this.c1 = c1
+    this.c2 = c2
+    this.doe = new Date(doe)
+
+    this.getName = function() {
+        return `${this.c1} ${this.c2}`
+    }
+   
+}
+
+Courses.prototype.getDate = function(){
+    return this.doe.getFullYear()
+}
+//instantiate object
+const crs1 = new Courses("CSE471","CSE440","10-01-2023")
+const crs2 = new Courses("CSE331","CSE340","12-01-2022")
+console.log(crs1)
+console.log(crs2.c2)
+console.log(crs2.doe)
+console.log(crs1.doe)
+console.log(crs1.getName())
+console.log(crs2.getDate())
+
+class Course{
+    constructor(n1, n2){
+        this.n1 = n1
+        this.n2 = n2
+    }
+    getNum(){
+        return `${this.n1} and ${this.n2}`
+
+    }   
+
+}
+const var1 = new Course(32, 55)
+console.log(var1)
+console.log(var1.getNum())
+
+//DOM -> Document Object Model
