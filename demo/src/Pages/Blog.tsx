@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, Route } from "react-router-dom";
 import { Routes } from "../../node_modules/react-router-dom/dist/index";
-import AllBlogList from "../components/allbloglist";
-import BlogListtingCategoryWise from "../components/blogcategory";
+import AllBlogList from "../Components/allbloglist";
+import BlogListtingCategoryWise from "../Components/blogcategory";
 
 const Blog: React.FC<{}> = () => {
     return (

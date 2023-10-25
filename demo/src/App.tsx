@@ -1,11 +1,11 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import NavBar from "./components/NavBar";
-import Login from "./Pages/Login";
-import SignUp from "./Pages/SignUp";
+import NavBar from "./Components/NavBar";
+import DataFormComponent_login from "./Pages/Login"; //login page
+import SignupForm from "./Pages/SignUp";
 import Home from "./Pages/Home";
 
-import AllBlogList from "./components/allbloglist";
-import BlogListtingCategoryWise from "./components/blogcategory";
+import AllBlogList from "./Components/allbloglist";
+import BlogListtingCategoryWise from "./Components/blogcategory";
 import './App.css';
 
 function App() {
@@ -16,8 +16,8 @@ function App() {
         <div>
           <Routes>
             <Route path="/" element={<Home/>}/>
-            <Route path="/signin" element={<Login/>}/>
-            <Route path="/signup" element={<SignUp/>}/>
+            <Route path="/signin" element={<DataFormComponent_login/>}/>
+            <Route path="/signup" element={<SignupForm/>}/>
             
                   <Route path="blog" element={<AllBlogList/>}/>
                   <Route path="javascript" element={<BlogListtingCategoryWise/>}/>
