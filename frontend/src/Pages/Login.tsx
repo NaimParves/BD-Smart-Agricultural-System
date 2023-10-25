@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import './LoginForm.css'; // Import your CSS file
 
 const DataFormComponent_login: React.FC = () => {
   const [userid, setUserid] = useState("");
@@ -7,7 +8,7 @@ const DataFormComponent_login: React.FC = () => {
   const [userType, setUserType] = useState("admin");
   const [userExists, setUserExists] = useState(false);
   const [userData, setUserData] = useState(null);
-  const [passwordMatch, setPasswordMatch] = useState(false); 
+  const [passwordMatch, setPasswordMatch] = useState(false);
 
   const checkUserExistence = async () => {
     let url;
@@ -37,8 +38,8 @@ const DataFormComponent_login: React.FC = () => {
   };
 
   return (
-    <div>
-      <h2>Check User Existence</h2>
+    <div className="login-container">
+      <h2>Login Form</h2>
       <div>
         <label>
           User Type:
@@ -88,11 +89,11 @@ const DataFormComponent_login: React.FC = () => {
               <p>User Type: {userData.user_type}</p>
             </div>
           ) : (
-            <p>Password is wrong</p>
+            <p className="error-message">Password is wrong</p>
           )}
         </div>
       ) : (
-        <p>User does not exist</p>
+        <p className="error-message">User does not exist</p>
       )}
     </div>
   );
