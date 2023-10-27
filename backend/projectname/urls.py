@@ -22,13 +22,17 @@ from authentication.views import ReactView, CheckEmployeeExistenceView
 #from django.views.generic import RedirectView
 from login_stuffs.views import ReactView_Register_admin, CheckUserExistenceView , ReactView_DeleteMember
 from field_officer_login.views import ReactView_Register_Field_Officer, CheckUserExistenceView_Field_Officer,ReactView_DeleteMember_Field_Officer
-
+from incoming_request.views import ReactView_DeleteMember_Incoming_request,ReactView_Register_Incoming_Request,CheckUserExistenceView_Incoming_request
 
 urlpatterns = [
     path('', ReactView.as_view(), name="anything"),
     path('admin/', admin.site.urls),
     path('check_employee/', CheckEmployeeExistenceView.as_view(), name="check_employee"),
     #path('authentication/', include('authentication.urls')),  # Include your authentication app's URLs
+
+    path('register_incoming_request/', ReactView_Register_Incoming_Request.as_view(), name="anything"),#incoming_request register
+    path('delete_incoming_request/', ReactView_DeleteMember_Incoming_request.as_view(), name="delete_member"),  #delete incoming request
+
 
     
     path('register/', ReactView_Register_admin.as_view(), name="anything"),# for admins register

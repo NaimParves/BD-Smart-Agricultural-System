@@ -49,7 +49,7 @@ const Admin_Page_show_admins: React.FC = () => {
 
 
       <div>
-        <h3>Data Table</h3>
+        <h3>Existing Admins</h3>
         <table>
           <thead>
             <tr>
@@ -60,6 +60,7 @@ const Admin_Page_show_admins: React.FC = () => {
               <th>NID</th>
               <th>User Type</th>
               <th>Action</th>
+              
             </tr>
           </thead>
           <tbody>
