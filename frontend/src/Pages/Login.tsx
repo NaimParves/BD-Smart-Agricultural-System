@@ -52,11 +52,12 @@ const DataFormComponent_login: React.FC = () => {
   };
 
   return (
-    <div className="login-container">
-      <h2>Login Form</h2>
-      <div>
+    <div className="center">
+      <h1>Login</h1>
+      <div className="text_field">
         <label>
           User Type:
+
           <select
             value={userType}
             onChange={(e) => setUserType(e.target.value)}
@@ -70,7 +71,7 @@ const DataFormComponent_login: React.FC = () => {
           </select>
         </label>
       </div>
-      <div>
+      <div className="text_field">
         <label>
           User ID:
           <input
@@ -80,7 +81,7 @@ const DataFormComponent_login: React.FC = () => {
           />
         </label>
       </div>
-      <div>
+      <div className="text_field">
         <label>
           Password:
           <input

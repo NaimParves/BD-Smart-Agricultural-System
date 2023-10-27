@@ -7,7 +7,8 @@ import Admin_Page from "./views/admin";
 import AllBlogList from "./Components/allbloglist";
 import BlogListtingCategoryWise from "./Components/blogcategory";
 import './App.css';
-import Field_Officer_Page from "./views/field_officer";
+//import Field_Officer_Page from "./views/field_officer";
+import Field_officer_Page from "./views_field_officers/Field_officer_view";
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
             />
               <Route
               path="/field_officer"
-              element={<Field_Officer_Page />} // Display the Admin_Page component
+              element={<Field_officer_Page />} // Display the Admin_Page component
             />
           </Routes>
         </div>

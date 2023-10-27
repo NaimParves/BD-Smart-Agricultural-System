@@ -5,7 +5,7 @@ from .serializers import ReactSerializer
 from rest_framework.response import Response
 from rest_framework import status
 
-class ReactView_Register_admin(APIView):
+class ReactView_Register_Incoming_Request(APIView):
     def get(self, request):
         data = React.objects.all()
         serializer = ReactSerializer(data, many=True)
@@ -18,7 +18,7 @@ class ReactView_Register_admin(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class CheckUserExistenceView(APIView):
+class CheckUserExistenceView_Incoming_request(APIView):
     def post(self, request):
         userid = request.data.get('userid')
 
@@ -39,8 +39,7 @@ class CheckUserExistenceView(APIView):
 
         return Response(response_data)
 
-
-class ReactView_DeleteMember(APIView):
+class ReactView_DeleteMember_Incoming_request(APIView):
     def post(self, request):
         member_id = request.data.get('memberId')
         print(member_id)
