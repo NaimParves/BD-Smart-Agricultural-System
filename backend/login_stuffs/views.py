@@ -38,3 +38,16 @@ class CheckUserExistenceView(APIView):
             response_data = {"userid": userid, "exists": False, "user_data": {}}
 
         return Response(response_data)
+
+
+class ReactView_DeleteMember(APIView):
+    def post(self, request):
+        member_id = request.data.get('memberId')
+        print(member_id)
+
+        try:
+            member = React.objects.get(userid=member_id)
+            member.delete()
+            return Response({'success': True})
+        except React.DoesNotExist:
+            return Response({'success': False, 'error': 'Member does not exist'})

@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import './LoginForm.css'; // Import your CSS file
-import { useNavigate } from 'react-router-dom';
 
 const DataFormComponent_login: React.FC = () => {
   const [userid, setUserid] = useState("");
@@ -10,19 +9,6 @@ const DataFormComponent_login: React.FC = () => {
   const [userExists, setUserExists] = useState(false);
   const [userData, setUserData] = useState(null);
   const [passwordMatch, setPasswordMatch] = useState(false);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (passwordMatch) {
-      localStorage.setItem('userid', userid);
-      localStorage.setItem('user_type', userType);
-      if (userType=="admin"){
-      navigate('/admin'); // Navigate to the admin page
-      } else if (userType=="field_officer"){
-        navigate('/field_officer');
-      }
-    }
-  }, [passwordMatch, navigate, userid, userType]);
 
   const checkUserExistence = async () => {
     let url;
@@ -101,7 +87,6 @@ const DataFormComponent_login: React.FC = () => {
               <p>Address: {userData.address}</p>
               <p>NID: {userData.nid}</p>
               <p>User Type: {userData.user_type}</p>
-              <p>User gg: {localStorage.getItem('user_type')}</p>
             </div>
           ) : (
             <p className="error-message">Password is wrong</p>
