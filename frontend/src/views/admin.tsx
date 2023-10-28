@@ -18,9 +18,10 @@ const Admin_Page: React.FC = () => {
         <p>User ID: {userid}</p>
         <p>User Type: {userType}</p>
       </div>
+      <Admin_Page_show_Incoming_request></Admin_Page_show_Incoming_request>
     <Admin_Page_show_admins></Admin_Page_show_admins>
     <Admin_Page_show_Field_Officers></Admin_Page_show_Field_Officers>
-    <Admin_Page_show_Incoming_request></Admin_Page_show_Incoming_request>
+    
     </>
   )
 

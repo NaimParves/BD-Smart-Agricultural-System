@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, Typography, Box } from '@mui/material';
 
 const Admin_Page_show_Incoming_request: React.FC = () => {
   const [userid, setUserid] = useState('');
@@ -13,18 +14,15 @@ const Admin_Page_show_Incoming_request: React.FC = () => {
     nid: '',
     user_type: '',
   });
-
-  // Add a state to force a re-render
   const [refresh, setRefresh] = useState(false);
+  const [tableVisible, setTableVisible] = useState(false);
 
   const deleteMember = (memberId: any) => {
     axios.post('http://127.0.0.1:8000/delete_incoming_request/', { memberId })
       .then((response) => {
         if (response.data.success) {
-          const updatedData = data.filter(item => item.id !== memberId);
-          setData(updatedData);
-          setRefresh(!refresh);
           window.alert('User deleted successfully.');
+          setRefresh(!refresh);
         } else {
           console.error('Delete request failed:', response.data);
           window.alert('User deletion failed. Please check the console for details.');
@@ -35,13 +33,13 @@ const Admin_Page_show_Incoming_request: React.FC = () => {
         window.alert('An error occurred while deleting the user. Please check the console for details.');
       });
   };
+
   let Url = '';
   const addMember = (newUserData: any) => {
-    
-    if (newUserData.user_type == 'admin'){
-        Url = 'http://127.0.0.1:8000/register/'
-    }else if (newUserData.user_type == 'field_officer'){
-        Url = 'http://127.0.0.1:8000/register_field_officer/'
+    if (newUserData.user_type === 'admin') {
+      Url = 'http://127.0.0.1:8000/register/';
+    } else if (newUserData.user_type === 'field_officer') {
+      Url = 'http://127.0.0.1:8000/register_field_officer/';
     }
     axios.post(Url, newUserData)
       .then((response) => {
@@ -62,7 +60,7 @@ const Admin_Page_show_Incoming_request: React.FC = () => {
     setUserid(storedUserId || '');
     setUserType(storedUserType || '');
 
-    axios.get("http://127.0.0.1:8000/register_incoming_request/")
+    axios.get('http://127.0.0.1:8000/register_incoming_request/')
       .then((response) => {
         setData(response.data);
       })
@@ -73,57 +71,54 @@ const Admin_Page_show_Incoming_request: React.FC = () => {
 
   return (
     <>
-      <div>
-        <h3>Incoming Request</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>User ID</th>
-              <th>Password</th>
-              <th>Email</th>
-              <th>Address</th>
-              <th>NID</th>
-              <th>User Type</th>
-              <th>Add Member</th>
-              <th>Delete Member</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item) => (
-              <tr key={item.id}>
-                <td>{item.userid}</td>
-                <td>{item.password}</td>
-                <td>{item.email}</td>
-                <td>{item.address}</td>
-                <td>{item.nid}</td>
-                <td>{item.user_type}</td>
-                <td>
-                  
-                  <button
-                    onClick={() => {
-                      // Assign the data to be added
-                      const newUserData = {
-                        userid: item.userid,
-                        password: item.password,
-                        email: item.email,
-                        address: item.address,
-                        nid: item.nid,
-                        user_type: item.user_type,
-                      };
-                      // Add the new member
-                      addMember(newUserData);
-                    }}
-                  >
-                    Add Member
-                  </button></td>
-                  <td>
-                  <button onClick={() => deleteMember(item.userid)}>Delete</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <Box my={3}>
+        <Typography variant="h4" component="div" gutterBottom>
+          Incoming Request
+        </Typography>
+        <Button variant="contained" color="primary" onClick={() => setTableVisible(!tableVisible)}>
+          {tableVisible ? 'Hide Incoming Requests' : 'Show Incoming Requests'}
+        </Button>
+      </Box>
+      {tableVisible && (
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>User ID</TableCell>
+                <TableCell>Password</TableCell>
+                <TableCell>Email</TableCell>
+                <TableCell>Address</TableCell>
+                <TableCell>NID</TableCell>
+                <TableCell>User Type</TableCell>
+                <TableCell>Add Member</TableCell>
+                <TableCell>Delete Member</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {data.map((item) => (
+                <TableRow key={item.id}>
+                  <TableCell>{item.userid}</TableCell>
+                  <TableCell>{item.password}</TableCell>
+                  <TableCell>{item.email}</TableCell>
+                  <TableCell>{item.address}</TableCell>
+                  <TableCell>{item.nid}</TableCell>
+                  <TableCell>{item.user_type}</TableCell>
+                  <TableCell>
+                    <Button onClick={() => addMember(item)} variant="contained" color="primary">
+                      Add Member
+                    </Button>
+                  </TableCell>
+                  <TableCell>
+                    <Button onClick={() => deleteMember(item.userid)} variant="contained" color="secondary">
+                      Delete
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      )}
     </>
   );
 };
