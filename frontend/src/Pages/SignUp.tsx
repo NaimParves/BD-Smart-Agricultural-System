@@ -1,5 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
+import {
+  Container,
+  Typography,
+  TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  Button,
+  Box,
+  Paper,
+} from "@mui/material";
 
 const SignupForm = () => {
   const [userid, setUserid] = useState("");
@@ -63,81 +75,85 @@ const SignupForm = () => {
   };
 
   return (
-    <div>
-      <h2>Signup Form</h2>
-      <div>
-        <label>
-          User Type:
-          <select
+    <Container maxWidth="sm">
+      <Paper elevation={3} style={{ padding: "20px", marginTop: "20px", marginLeft: "20px", marginRight: "20px" }}>
+        <Typography variant="h4" align="center">
+          Signup Form
+        </Typography>
+        <FormControl fullWidth style={{ margin: "10px 0" }}>
+          <InputLabel></InputLabel>
+          <Select
             value={user_type}
             onChange={(e) => setUserType(e.target.value)}
             onBlur={checkUserExistence}
           >
-            <option value="admin">Admin</option>
-            <option value="field_officer">Field Officer</option>
-            <option value="expert">Expert</option>
-            <option value="businessman">Businessman</option>
-            <option value="farmer">Farmer</option>
-            <option value="deliveryman">Deliveryman</option>
-          </select>
-        </label>
-      </div>
-      <div>
-        <label>
-          User ID:
-          <input
-            type="text"
-            value={userid}
-            onChange={(e) => setUserid(e.target.value)}
-            onBlur={checkUserExistence}
-          />
-        </label>
+            <MenuItem value="admin">Admin</MenuItem>
+            <MenuItem value="field_officer">Field Officer</MenuItem>
+            <MenuItem value="expert">Expert</MenuItem>
+            <MenuItem value="businessman">Businessman</MenuItem>
+            <MenuItem value="farmer">Farmer</MenuItem>
+            <MenuItem value="deliveryman">Deliveryman</MenuItem>
+          </Select>
+        </FormControl>
+        <TextField
+          label="User ID"
+          fullWidth
+          variant="outlined"
+          value={userid}
+          onChange={(e) => setUserid(e.target.value)}
+          onBlur={checkUserExistence}
+          style={{ margin: "10px 0" }}
+        />
         {userExists ? (
-          <p>User already exists. Please choose a different User ID.</p>
+          <Typography className="error-message">
+            User already exists. Please choose a different User ID.
+          </Typography>
         ) : null}
-      </div>
-      <div>
-        <label>
-          Password:
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <label>
-          Email:
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <label>
-          Address:
-          <input
-            type="text"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <label>
-          NID:
-          <input
-            type="text"
-            value={nid}
-            onChange={(e) => setNid(e.target.value)}
-          />
-        </label>
-      </div>
-      <button onClick={handleSubmit}>Sign Up</button>
-    </div>
+        <TextField
+          label="Password"
+          fullWidth
+          variant="outlined"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          style={{ margin: "10px 0" }}
+        />
+        <TextField
+          label="Email"
+          fullWidth
+          variant="outlined"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          style={{ margin: "10px 0" }}
+        />
+        <TextField
+          label="Address"
+          fullWidth
+          variant="outlined"
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
+          style={{ margin: "10px 0" }}
+        />
+        <TextField
+          label="NID"
+          fullWidth
+          variant="outlined"
+          value={nid}
+          onChange={(e) => setNid(e.target.value)}
+          style={{ margin: "10px 0" }}
+        />
+        <Button
+          variant="contained"
+          color="primary"
+          fullWidth
+          onClick={handleSubmit}
+          style={{ margin: "20px 0" }}
+        >
+          Sign Up
+        </Button>
+      </Paper>
+    </Container>
   );
 };
 
