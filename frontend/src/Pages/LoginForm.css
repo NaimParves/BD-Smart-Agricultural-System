@@ -19,15 +19,18 @@ body{
 
   transform: translate(-50%, -50%);
   width: 400px;
-  height: 300px;
+  height: 400px;
   background: white;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 10px 10px 15px rgba(134, 62, 62, 0.05);
+  padding-top: 50px;
+  padding-inline: 50px;
+  
   
 }
 .center h1{
   text-align: center;
-  padding: 20px 0;
+  padding: 40px 0;
   border-bottom: 1px solid silver;
 }
 .center form {
@@ -40,6 +43,7 @@ body{
   border-bottom: 2px solid #adadad;
   margin: 30px 0;
   padding-bottom: 30px; /* Increase the padding to adjust input field height */
+  padding-top: 60px;
 }
 
 .txt_field input {
